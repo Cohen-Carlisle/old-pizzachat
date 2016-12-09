@@ -1,0 +1,4 @@
+<%= for message <- @messages do %>
+<%= "#{message.author}: #{message.content}" %>
+<br>
+<% end %>

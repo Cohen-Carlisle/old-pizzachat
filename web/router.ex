@@ -16,7 +16,7 @@ defmodule Pizzachat.Router do
   scope "/", Pizzachat do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", MessageController, :index
     post "/message/create", MessageController, :create
   end
 
