@@ -4,11 +4,12 @@ defmodule Pizzachat.MessageController do
 
   def index(conn, _params) do
     messages = Repo.all(Message)
-    render conn, "index.html", messages: messages
+    changeset = Message.changeset(%Message{})
+    render(conn, "index.html", messages: messages, changeset: changeset)
   end
 
   def create(conn, params) do
-    changeset = Pizzachat.Message.changeset(%Message{}, params)
+    changeset = Pizzachat.Message.changeset(%Message{}, params["message"])
     case Repo.insert(changeset) do
     {:ok, _message} ->
       conn
@@ -17,5 +18,9 @@ defmodule Pizzachat.MessageController do
       conn
       |> send_resp(500, "Pizza failure!")
     end
+  end
+
+  def api_create(conn, params) do
+    create(conn, %{"message" => params})
   end
 end

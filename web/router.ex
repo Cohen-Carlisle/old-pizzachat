@@ -23,6 +23,6 @@ defmodule Pizzachat.Router do
   # Other scopes may use custom stacks.
   scope "/api", Pizzachat do
     pipe_through :api
-    post "/message/create", MessageController, :create
+    post "/message/create", MessageController, :api_create
   end
 end
