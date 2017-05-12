@@ -2,7 +2,7 @@ defmodule Pizzachat.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", Pizzachat.RoomChannel
+  channel "topic:*", Pizzachat.TopicChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket, timeout: 45_000
